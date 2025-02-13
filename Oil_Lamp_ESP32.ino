@@ -4,20 +4,22 @@
 #include <SPIFFS.h>
 
 // Replace with your network credentials
-const char* ssid = "Pixel";
-const char* password = "22222222";
+const char *ssid = "ADD HERE YOUR WIFI NAME";
+const char *password = "ADD HERE YOUR WIFI PASSWORD";
 
 // Create an instance of the web server running on port 80
 WebServer server(80);
 
-void setup() {
+void setup()
+{
   // Start Serial Monitor
   Serial.begin(115200);
-  Serial1.begin(9600, SERIAL_8N1, 18, 19);  // SERIAL_8N1, RX pin=16, TX pin=17
+  Serial1.begin(9600, SERIAL_8N1, 18, 19); // SERIAL_8N1, RX pin=16, TX pin=17
 
   // Connect to Wi-Fi
   WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED)
+  {
     delay(1000);
     Serial.println("Connecting to WiFi...");
   }
@@ -25,40 +27,42 @@ void setup() {
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 
-  if (!SPIFFS.begin(true)) {
+  if (!SPIFFS.begin(true))
+  {
     Serial.println("Failed to mount filesystem");
     return;
   }
 
   // Define the routes for the web server
-  server.on("/", []() {
-    server.send(200, "text/html", generateHTML());
-  });
-  server.on("/toggle", []() {
-    handleToggle();
-  });
-  server.on("/background.png", HTTP_GET, []() {
+  server.on("/", []()
+            { server.send(200, "text/html", generateHTML()); });
+  server.on("/toggle", []()
+            { handleToggle(); });
+  server.on("/background.png", HTTP_GET, []()
+            {
     File file = SPIFFS.open("/background.jpg", "r");
     if (!file) {
       server.send(404, "text/plain", "File not found");
       return;
     }
     server.streamFile(file, "image/jpg");
-    file.close();
-  });
+    file.close(); });
 
   // Start the server
   server.begin();
 }
 
-void loop() {
+void loop()
+{
   // Handle incoming client requests
   server.handleClient();
 }
 
-String generateHTML() {
+String generateHTML()
+{
   String buttonHTML = "";
-  for (int i = 1; i <= 9; i++) {
+  for (int i = 1; i <= 9; i++)
+  {
     buttonHTML += "<button class=\"button\" id=\"button" + String(i) + "\" data-state=\"OFF\" onclick=\"sendToggle(" + String(i) + ")\">Lamp " + String(i) + " OFF</button>\n";
   }
 
@@ -151,18 +155,25 @@ String generateHTML() {
   return html;
 }
 
-void handleToggle() {
-  if (server.hasArg("state") && server.hasArg("toggle")) {
-    int toggleNumber = server.arg("toggle").toInt();  // Get the toggle number
+void handleToggle()
+{
+  if (server.hasArg("state") && server.hasArg("toggle"))
+  {
+    int toggleNumber = server.arg("toggle").toInt(); // Get the toggle number
     int state = server.arg("state").toInt();
-    if (toggleNumber >= 1 && toggleNumber <= 9) {
+    if (toggleNumber >= 1 && toggleNumber <= 9)
+    {
       String toggleStateStr = state == 1 ? "ON" : "OFF";
       Serial1.println(String(toggleNumber) + ":" + toggleStateStr);
       server.send(200, "text/plain", "OK");
-    } else {
+    }
+    else
+    {
       server.send(400, "text/plain", "Invalid Toggle Number");
     }
-  } else {
+  }
+  else
+  {
     server.send(400, "text/plain", "Bad Request");
   }
 }

@@ -2,13 +2,13 @@
 
 SoftwareSerial mySerial(10, 11);  // RX=10, TX=11
 
-// Pin assignments and states for 15 toggles (LEDs)
+
 const int ledPins[] = {24, 25, 26, 27, 28, 29, 30, 31, 32};
-bool ledStates[9] = {false};  // Array to store the states of the LEDs, initialized to false (OFF)
+bool ledStates[9] = {false};  
 
 const int numToggles = 9;  // Number of toggles
 
-// Variables to manage the incoming data
+
 String inputString = "";  // A string to hold the incoming message
 bool stringComplete = false;  // A flag to indicate when a complete message is received
 
