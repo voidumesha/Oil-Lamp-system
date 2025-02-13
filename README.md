@@ -7,34 +7,8 @@ install both codes to board ,mentioned code in that file name.
 
 RUN THE PROJECT
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Grid</title>
-    <style>
-        .image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-        .image-container img {
-            width: 300px; /* Adjust width as needed */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 10px; /* Optional styling */
-            object-fit: cover; /* Ensures proper image fitting */
-        }
-    </style>
-</head>
-<body>
-    <div class="image-container">
-        <img src="https://github.com/user-attachments/assets/8541359d-1a36-4183-9bab-319c15fb6015" alt="Image 1">
-        <img src="https://github.com/user-attachments/assets/e819b459-bd0f-46b7-bac5-b7c7198839ca" alt="Image 2">
-    </div>
-</body>
-</html>
+![WhatsApp Image 2025-02-14 at 01 44 21_0d56d909](https://github.com/user-attachments/assets/bccbd103-d410-4602-ac3e-a062617c7d3e)
+![WhatsApp Image 2025-02-14 at 00 56 42_e1c84cc3](https://github.com/user-attachments/assets/b78b3199-1570-430c-8996-eb4321bcb2fb)
 
 
 
