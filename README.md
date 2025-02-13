@@ -10,7 +10,10 @@ RUN THE PROJECT
 
 
 ![WhatsApp Image 2025-02-14 at 00 56 42_f6502528](https://github.com/user-attachments/assets/8541359d-1a36-4183-9bab-319c15fb6015)
-![WhatsApp Image 2025-02-14 at 00 56 43_a38069c1](https://github.com/user-attachments/assets/701a75d3-dd44-4109-ad75-c48f23073fa1)
+
+![WhatsApp Image 2025-02-14 at 01 44 21_14a34e27](https://github.com/user-attachments/assets/e819b459-bd0f-46b7-bac5-b7c7198839ca)
+
+
 
 
 
